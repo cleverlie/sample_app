@@ -33,6 +33,15 @@ describe User do
   it { should be_valid }
   it { should_not be_admin }
   
+  describe "accesible attributes" do
+    it "should not allow access to admin attribute" do
+      expect do
+        User.new(name: "pancho", email: "gancho", password: "sancho",
+                  password_confirmation: "sancho", admin: true)
+      end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end
+  end
+  
   describe "with admin attribute set to 'true'" do
     before { @user.toggle! (:admin) }
     
