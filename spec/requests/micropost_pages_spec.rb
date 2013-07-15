@@ -43,4 +43,13 @@ describe "MicropostPages" do
     end
   end
   
+#  describe "sidebar" do
+#    before do
+#      visit root_path
+#      FactoryGirl.create(:micropost, user: user)
+#    end
+#    it { should have_selector('span', text: 
+#                     pluralize(user.microposts.count, "micropost") ) }
+#  end
+  
 end
