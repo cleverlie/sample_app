@@ -231,5 +231,13 @@ describe User do
       subject { other_user }
       its(:followers) { should include(@user) }
     end
+    
+    it "should destroy associated relationships" do
+      relationships = @user.relationships
+      @user.destroy
+      relationships.each do |relationship|
+        Relationship.find_by_followed_id(relationship.followed_id).should be_nil
+      end
+    end
   end
 end
